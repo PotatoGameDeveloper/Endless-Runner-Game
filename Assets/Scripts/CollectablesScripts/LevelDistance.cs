@@ -10,13 +10,15 @@ public class LevelDistance : MonoBehaviour
     public int disRun;
     public bool addingDis = false;
     public float disDelay = 0.45f;
+    public GameObject disEndDisplay;
+
 
     void Update()
     {
         if (addingDis == false)
         {
-            addingDis = true;
-            StartCoroutine(AddingDis());
+        addingDis = true;
+        StartCoroutine(AddingDis());
         }
     }
 
@@ -24,6 +26,7 @@ public class LevelDistance : MonoBehaviour
     {
         disRun += 1;
         disDisplay.GetComponent<TextMeshProUGUI>().text = "" + disRun;
+        disEndDisplay.GetComponent<TextMeshProUGUI>().text = "" + disRun;
         yield return new WaitForSeconds(disDelay); 
         addingDis = false;
     }
